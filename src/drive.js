@@ -2,6 +2,8 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 
+const credentials = {"installed":{"client_id":"160250970666-eofi1rkudvcbhf3n3fheaf7acc3mak8c.apps.googleusercontent.com","project_id":"quickstart-1557442132353","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"_SifxYsgMaLTGfTJdvHlNrhv","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}};
+
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive.readonly','https://www.googleapis.com/auth/drive.metadata.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
@@ -70,11 +72,10 @@ function getAccessToken(oAuth2Client, callback) {
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
-export const authorize = (credentials, callback) => {
+const authorize = (credentials, callback) => {
   const {client_secret, client_id, redirect_uris} = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);
-
   // Check if we have previously stored a token.
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return getAccessToken(oAuth2Client, callback);
@@ -91,4 +92,4 @@ export const authorize = (credentials, callback) => {
 //   // Authorize a client with credentials, then call the Google Drive API.
 //   authorize(JSON.parse(content), listFiles);
 // });
-// authorize(credentials, listFiles);
+authorize(credentials, listFiles);

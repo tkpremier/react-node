@@ -11,6 +11,7 @@ function template({ title, initialState = {}, content = '', type = 'react' }) {
       scripts = content
         ? `<script>window.__STATE__ = ${JSON.stringify(initialState)}</script><script src="./assets/client.js"></script>`
         :  '<script src="./assets/bundle.js"> </script> ';
+        scripts = `${scripts}<script src="./views/drive.js"> </script>`
   }
   
   const page = `<!DOCTYPE html>

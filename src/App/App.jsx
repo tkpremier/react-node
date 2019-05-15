@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 
 class App extends PureComponent {
-  // componentDidMount() {
-  //   console.log('compDidMount');
-  //   this.props.receiveApps();
-  // }
+  componentDidMount() {
+    console.log('compDidMount');
+    this.props.requestDrive();
+  }
 
   render() {
     const { isFetching, name, type } = this.props;

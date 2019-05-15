@@ -11,8 +11,8 @@
     "sass": "node ./views/styles.js ./src/styles.scss",
     "sass-watch": "node ./views/styles.js ./src/styles.scss watch",
     "start": "babel src -d views && node app.js",
-    "prestart-drive": "npm run babel",
-    "start-drive": "node ./views/drive.js",
+    "prebuild-drive": "npm run babel",
+    "build-drive": "node ./views/drive.js",
     "test": "mocha",
     "watch": "webpack -w"
   },

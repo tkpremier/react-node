@@ -39,7 +39,9 @@ const webWorkers = (req, res) => {
 
 const app = express();
 
+
 app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
+app.use('/views', express.static(path.resolve(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(logger('dev'));

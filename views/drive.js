@@ -7,8 +7,17 @@ var readline = require('readline');
 var _require = require('googleapis'),
     google = _require.google;
 
-var credentials = require('./credentials'); // If modifying these scopes, delete token.json.
-
+var credentials = {
+  "installed": {
+    "client_id": "160250970666-eofi1rkudvcbhf3n3fheaf7acc3mak8c.apps.googleusercontent.com",
+    "project_id": "quickstart-1557442132353",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "_SifxYsgMaLTGfTJdvHlNrhv",
+    "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
+  }
+}; // If modifying these scopes, delete token.json.
 
 var SCOPES = ['https://www.googleapis.com/auth/drive.readonly', 'https://www.googleapis.com/auth/drive.metadata.readonly']; // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
@@ -25,7 +34,7 @@ function listFiles(auth) {
     version: 'v3',
     auth: auth
   });
-  drive.files.get({
+  drive.files.list({
     pageSize: 100
   }, function (err, res) {
     if (err) return console.log('The API returned an error: ' + err);
@@ -82,7 +91,7 @@ function getAccessToken(oAuth2Client, callback) {
  */
 
 
-function authorize(credentials, callback) {
+var authorize = function authorize(credentials, callback) {
   var _credentials$installe = credentials.installed,
       client_secret = _credentials$installe.client_secret,
       client_id = _credentials$installe.client_id,
@@ -94,7 +103,7 @@ function authorize(credentials, callback) {
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
   });
-} // INITIAL FUNCTION
+}; // INITIAL FUNCTION
 // Load client secrets from a local file.
 // fs.readFile('./credentials.json', (err, content) => {
 //   if (err) return console.log('Error loading client secret file:', err);

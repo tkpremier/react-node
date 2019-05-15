@@ -23,7 +23,8 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  receiveApps: _actions.receiveApps
+  receiveApps: _actions.receiveApps,
+  requestDrive: _actions.requestDrive
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_App.default);

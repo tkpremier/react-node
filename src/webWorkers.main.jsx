@@ -6,6 +6,11 @@ const { render } = ReactDOM;
 const Button = (props) => {
   const { workerUrl } = props;
   const worker = new Worker(workerUrl);
+  if (props.pending) {
+    // showSpinner
+  } else {
+    // showData
+  }
   worker.onmessage = function (e) {
     console.log('testworker onmessage:  ', e.data);
     // if (e.data.indexOf('worker for') === 0) {
@@ -37,7 +42,7 @@ window.onload = () => {
           workerUrl="./assets/webWorkers.worker.js"
         />
       </form>
-      ), app);
+    ), app);
     // const button1 = document.createElement('button');
     // const button2 = document.createElement('button');
 

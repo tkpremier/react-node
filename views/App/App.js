@@ -43,11 +43,13 @@ function (_PureComponent) {
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('compDidMount');
+      this.props.requestDrive();
+    }
+  }, {
     key: "render",
-    // componentDidMount() {
-    //   console.log('compDidMount');
-    //   this.props.receiveApps();
-    // }
     value: function render() {
       var _this$props = this.props,
           isFetching = _this$props.isFetching,
